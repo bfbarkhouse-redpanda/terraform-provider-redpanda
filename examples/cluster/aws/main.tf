@@ -113,3 +113,8 @@ variable "partition_count" {
 variable "replication_factor" {
   default = 3
 }
+
+output "cluster_computed_properties" {
+  description = "Computed properties for the cluster (read-only configuration applied by Redpanda)"
+  value       = redpanda_cluster.test.cluster_configuration.computed_properties_json
+}

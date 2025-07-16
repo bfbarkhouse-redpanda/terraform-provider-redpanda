@@ -74,6 +74,20 @@ func datasourceClusterSchema() schema.Schema {
 				Computed:    true,
 				Description: "Timestamp when the cluster was created.",
 			},
+			"cluster_configuration": schema.SingleNestedAttribute{
+				Computed:    true,
+				Description: "Configuration for the cluster.",
+				Attributes: map[string]schema.Attribute{
+					"custom_properties_json": schema.StringAttribute{
+						Computed:    true,
+						Description: "Custom properties for the cluster in JSON format.",
+					},
+					"computed_properties_json": schema.StringAttribute{
+						Computed:    true,
+						Description: "Computed properties for the cluster in JSON format. This is read-only and shows the actual configuration applied by Redpanda.",
+					},
+				},
+			},
 			"kafka_api": schema.SingleNestedAttribute{
 				Computed:    true,
 				Description: "Cluster's Kafka API properties.",
